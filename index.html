@@ -1,59 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seni Çok Seviyorum</title>
-  <style>
-    body {
-      background-image: url('https://www.muratturfan.com/2022/02/hayatinizda-sevgi-olmasi-kalp-sagliginiza-fayda-saglayabilir.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-color: #f3f3f3;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-    }
+    <title>Örnek Web Sitesi</title>
+    <style>
+        body {
+            background-image: url('https://www.muratturfan.com/2022/02/hayatinizda-sevgi-olmasi-kalp-sagliginiza-fayda-saglayabilir.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-    }
+        header {
+            text-align: center;
+            padding: 20px;
+        }
 
-    h1 {
-      font-size: 24px;
-      color: #0000ff;
-      margin-top: 1cm;
-    }
+        h1 {
+            color: white;
+            font-size: 36px;
+        }
 
-    p {
-      font-size: 16px;
-    }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
 
-    .link {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #0000ff;
-      text-decoration: underline;
-      cursor: pointer;
-      font-size: 14px;
-    }
-  </style>
+        nav ul li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            padding: 5px 10px;
+            border: 2px solid white;
+            border-radius: 20px;
+        }
+
+        nav ul li a:hover {
+            background-color: white;
+            color: red;
+        }
+
+        .center-text {
+            text-align: center;
+            color: blue;
+            font-size: 75px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Seni Çok Seviyorum</h1>
-  <div class="container">
-    <p></p>
-    <audio controls>
-      <source src="mp3indirdur-Yalın-Kucugum.mp3">
-    </audio>
-  </div>
-  <a href="bilal-mavi.html" class="link">Bilal ♥ Mavi</a>
+    <header>
+        <h1>Hoş Geldiniz!</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="birlikte.html">Giriş</a></li>
+            <li><a href="#">Hakkında</a></li>
+            <li><a href="#">Hizmetler</a></li>
+            <li><a href="#">İletişim</a></li>
+        </ul>
+    </nav>
+
+    <div class="center-text">
+        Bilal &#x2764;&#xfe0f; Mavi
+    </div>
+
+    <!-- Diğer bölümler buraya eklenebilir -->
+
 </body>
 </html>
