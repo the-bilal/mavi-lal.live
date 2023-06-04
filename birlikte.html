@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Aşk Sayfası</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-image: url('https://st.depositphotos.com/1135494/3862/i/950/depositphotos_38622587-stock-photo-hand-heart-sunrise-sunset.jpg');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 500px;
+      margin: 50px auto;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container input[type="text"],
+    .container input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      color: blue;
+    }
+
+    .container input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Aşk Sayfası</h2>
+    <form action="aşk.html" onsubmit="return validateForm()">
+      <input type="text" name="username" placeholder="Kullanıcı Adı"><br>
+      <input type="password" name="password" placeholder="Şifre"><br>
+      <input type="submit" value="Aşkı Keşfet">
+      <div id="error" class="error-message" style="display: none;">Kullanıcı adı veya şifre yanlış!</div>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      var username = document.getElementsByName("username")[0].value;
+      var password = document.getElementsByName("password")[0].value;
+
+      if (username !== "mavi" || password !== "mavibilal") {
+        document.getElementById("error").style.display = "block";
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>
