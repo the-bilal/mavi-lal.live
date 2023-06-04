@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Yandex Harita Örneği</title>
+  <style>
+    #map {
+      width: 100%;
+      height: 100vh;
+      opacity: 0; /* Başlangıçta harita gizli olacak */
+      transition: opacity 1s ease; /* Animasyon süresi ve geçiş etkisi */
+    }
+  </style>
+  <script src="https://api-maps.yandex.ru/2.1/?lang=tr_TR" type="text/javascript"></script>
+  <script type="text/javascript">
+    ymaps.ready(init);
+
+    function init() {
+      var coordinates = [40.984275492050436, 37.91864926860021];
+      var map = new ymaps.Map("map", {
+        center: coordinates,
+        zoom: 12
+      });
+      var placemark = new ymaps.Placemark(coordinates, {}, {
+        preset: 'islands#dotCircleIcon',
+        iconColor: '#ff0000'
+      });
+      map.geoObjects.add(placemark);
+
+      // Harita yüklenince animasyonla göster
+      document.getElementById('map').style.opacity = '1';
+    }
+  </script>
+</head>
+<body>
+  <div id="map"></div>
+</body>
+</html>

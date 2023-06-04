@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mavi Arka Plan</title>
+  <style>
+    body {
+      background-color: #CCCCCC; /* Açık gri arka plan rengi */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease; /* Geçiş efekti ayarı */
+    }
+    ul {
+      list-style-position: inside; /* Başlangıç noktalarını içeride hizala */
+      list-style-type: none;
+      padding: 0;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    li {
+      font-weight: bold;
+      color: #000000; /* Siyah renk */
+      margin-bottom: 10px;
+    }
+  </style>
+  <script>
+    window.addEventListener("DOMContentLoaded", function() {
+      document.body.style.opacity = "1"; // Sayfa yüklendiğinde opaklığı 1'e ayarla
+    });
+  </script>
+</head>
+<body>
+  <ul>
+    <li><strong>1.</strong> Mavi her zaman çok sevilecek</li>
+    <li><strong>2.</strong> Mavi'nin asla ama asla üzülmesine izin verilmeyecek</li>
+    <li><strong>3.</strong> Kücücüğüm şarkısı bizim müziğimiz sayılacak</li>
+    <li><strong>4.</strong> İlk 4 madde değiştirilemez, değiştirilmesi teklif dahi edilemez</li>
+  </ul>
+</body>
+</html>
