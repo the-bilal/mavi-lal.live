@@ -50,6 +50,61 @@
             color: blue;
             font-size: 75px;
         }
+        
+        .music-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .music-title {
+            color: white;
+            font-size: 24px;
+            margin-top: 10px;
+        }
+        
+        .music-container:before {
+            content: 'Birlikte Sonsuza Dek';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 24px;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .love-button {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .love-button a {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 24px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .message-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .message-container p {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -69,7 +124,283 @@
         Bilal &#x2764;&#xfe0f; Mavi
     </div>
 
-    <!-- Diğer bölümler buraya eklenebilir -->
-
+    <div class="music-container">
+        <audio controls>
+            <source src="muzikdosyasi.mp3" type="audio/mpeg">
+            Tarayıcınız ses öğesini desteklemiyor.
+        </audio>
+    </div>
+    
+    <div class="love-button">
+        <a href="#" id="love-btn">Aşk İçin Tıkla</a>
+    </div>
+    
+    <div class="message-container">
+        <p id="message-text"></p>
+    </div>
+    
+    <script>
+        var messages = [
+            "Mavi, seni her gün daha çok seviyorum!",
+            "Hayatımda senin gibi özel biri olduğu için şanslıyım.",
+            "Seninle geçirdiğim her an benim için değerli.",
+            "Gözlerinde kaybolmak istediğim tek insan sensin.",
+            "Seninle her şey daha güzel ve anlamlı.",
+            "Kalbim seninle atıyor, seni seviyorum.",
+            "Hayatımda senin gibi biri olduğu için şükrediyorum.",
+            "Seninle geleceğe yürümek istiyorum.",
+            "Mavi, seni düşünmek bile beni mutlu ediyor.",
+            "Kalbimin tek sahibi sensin, seni seviyorum.",
+                "Seni seviyorum, her gün daha da çok özlüyorum, Mavi.",
+    "Kalbimdeki en büyük boşluğu, senin olmadığın anlarda hissediyorum, Mavi.",
+    "Aşkımı anlatmanın en güzel yolu, seni ne kadar çok özlediğimi söylemek, Mavi.",
+    "Seninle geçirdiğim her anı özlüyor, seninle olmanın hayalini kuruyorum, Mavi.",
+    "Seninle birlikteyken kalbim coşuyor, seni özlemekten kendimi alamıyorum, Mavi.",
+    "Özlemek, senin yokluğunda içimi acıtan bir duygu, Mavi.",
+    "Seninle geçen her dakika, seni daha da çok özlememe sebep oluyor, Mavi.",
+    "Gözlerim seni arıyor, özlemim seninle dolu, Mavi.",
+    "Her anımda sen varsın, her anımda seni özlüyorum, Mavi.",
+    "Seninle geçirdiğim her an, özlemimi bir kat daha artırıyor, Mavi.",
+    "Sensiz geçen her gün, seni daha çok özlememe sebep oluyor, Mavi.",
+    "Kalbim seninle atıyor, özlemim de seninle büyüyor, Mavi.",
+    "Seni özlemek, kalbimin en büyük çırpınışı, Mavi.",
+    "Sensizliğin acısı, her geçen gün daha da derinleşiyor, Mavi.",
+    "Sana olan özlemim, içimde hiç bitmeyen bir ateş gibi yanıyor, Mavi.",
+    "Seninle geçen her an, özlemimle savaşmama sebep oluyor, Mavi.",
+    "Seninle geçirdiğim her an, seni özlememle birleşiyor, Mavi.",
+    "Seni ne kadar çok özlediğimi anlatmaya kelimeler yetmiyor, Mavi.",
+    "Sana olan özlemim, ruhumun en derininde saklı, Mavi.",
+    "Özlemim seninle birlikte büyüyor, seni ne kadar çok sevdiğimi anlatıyor, Mavi.",
+    "Gözlerim seni görmeyi, kalbim seni hissetmeyi özlemiş, Mavi.",
+    "Seninle geçen her an, seninle olan hasretimi biraz olsun dindiriyor, Mavi.",
+    "Seni düşünmek, seni özlemek, kalbimdeki en büyük duygular, Mavi.",
+    "Seni sevdiğimi, seni ne kadar çok özlediğimi anlatmaya çalışıyorum, Mavi.",
+    "Seninle geçen her dakika, özlemimi biraz daha artırıyor, Mavi.",
+    "Özlemim seninle birlikte büyüyor, seninle olan aşkımı anlatıyor, Mavi.",
+    "Kalbim seninle atıyor, ruhum seninle dolu, seni özlemekten kendimi alamıyorum, Mavi.",
+    "Gözlerim seni arıyor, kalbim seninle atıyor, özlemim seni özlemekten büyüyor, Mavi.",
+    "Seninle geçen her an, seni daha çok özlememe sebep oluyor, Mavi.",
+    "Sensizlik, içimde açılan bir yaradır, seni özlemek ise onu iyileştiren bir ilaç, Mavi.",
+    "Kalbimdeki en güzel hislerden biri, seni ne kadar çok özlediğimi hissetmek, Mavi.",
+    "Seni özlemek, seni sevmek kadar doğal ve içten bir duygu, Mavi.",
+    "Sensiz geçen her an, seni daha çok özlememe sebep oluyor, Mavi.",
+    "Seni sevdiğimi, seni ne kadar çok özlediğimi anlatabilmek için tüm kalbimle yazıyorum, Mavi.",
+    "Seninle geçen her an, seni özlemekten başka bir şey düşünmeme engel oluyor, Mavi.",
+    "Sana olan özlemim, içimde bir fırtına gibi esiyor, Mavi.",
+    "Sensizlik, seni ne kadar çok özlediğimi anlatan bir sessizlik demeti, Mavi.",
+    "Seninle geçen her an, seninle olan özlemimi daha da artırıyor, Mavi.",
+    "Seni seviyorum demenin en güzel yolu, seni ne kadar çok özlediğimi söylemek, Mavi.",
+    "Sensizlik, içimde bir çığlık gibi yankılanıyor, seni özlemek ise onu susturan bir melodi, Mavi.",
+    "Seni özlemek, seni sevmekten doğan en doğal duygu, Mavi.",
+    "Seni ne kadar çok özlediğimi anlatmaya kelimeler yetmiyor, sadece kalbim anlıyor, Mavi.",
+    "Seni düşünmek, seni özlemek; kalbimde açan en güzel çiçekler, Mavi.",
+    "Sana olan özlemim, seni ne kadar çok sevdiğimi anlatıyor, Mavi.",
+    "Gözlerim seni arıyor, kalbim seninle atıyor, özlemim ise seninle büyüyor, Mavi.",
+    "Seninle geçen her an, seni daha da çok özlememe sebep oluyor, Mavi.",
+    "Sensizlik, içimde açılan bir yaradır, seni özlemek ise onu iyileştiren bir ilaç, Mavi.",
+    "Kalbimdeki en güzel hislerden biri, seni ne kadar çok özlediğimi hissetmek, Mavi.",
+    "Seni özlemek, seni sevmek kadar doğal ve içten bir duygu, Mavi.",
+    "Sensiz geçen her an, seni daha çok özlememe sebep oluyor, Mavi.",
+    "Seni sevdiğimi, seni ne kadar çok özlediğimi anlatabilmek için tüm kalbimle yazıyorum, Mavi.",
+    "Seninle geçen her an, seni özlemekten başka bir şey düşünmeme engel oluyor, Mavi.",
+    "Sana olan özlemim, içimde bir fırtına gibi esiyor, Mavi.",
+    "Sensizlik, seni ne kadar çok özlediğimi anlatan bir sessizlik demeti, Mavi.",
+    "Seninle geçen her an, seninle olan özlemimi daha da artırıyor, Mavi.",
+    "Seni seviyorum demenin en güzel yolu, seni ne kadar çok özlediğimi söylemek, Mavi.",
+    "Sensizlik, içimde bir çığlık gibi yankılanıyor, seni özlemek ise onu susturan bir melodi, Mavi.",
+    "Seni özlemek, seni sevmekten doğan en doğal duygu, Mavi.",
+    "Seni ne kadar çok özlediğimi anlatmaya kelimeler yetmiyor, sadece kalbim anlıyor, Mavi.",
+    "Seni düşünmek, seni özlemek; kalbimde açan en güzel çiçekler, Mavi.",
+    "Sana olan özlemim, seni ne kadar çok sevdiğimi anlatıyor, Mavi.",
+    "Gözlerim seni arıyor, kalbim seninle atıyor, özlemim ise seninle büyüyor, Mavi.",
+    "Seninle geçen her an, seni daha da çok özlememe sebep oluyor, Mavi.",
+    "Sensizlik, içimde açılan bir yaradır, seni özlemek ise onu iyileştiren bir ilaç, Mavi.",
+    "Kalbimdeki en güzel hislerden biri, seni ne kadar çok özlediğimi hissetmek, Mavi.",
+    "Seni özlemek, seni sevmek kadar doğal ve içten bir duygu, Mavi.",
+    "Sensiz geçen her an, seni daha çok özlememe sebep oluyor, Mavi.",
+    "Seni sevdiğimi, seni ne kadar çok özlediğimi anlatabilmek için tüm kalbimle yazıyorum, Mavi.",
+    "Seninle geçen her an, seni özlemekten başka bir şey düşünmeme engel oluyor, Mavi.",
+    "Sana olan özlemim, içimde bir fırtına gibi esiyor, Mavi.",
+    "Sensizlik, seni ne kadar çok özlediğimi anlatan bir sessizlik demeti, Mavi.",
+    "Seninle geçen her an, seninle olan özlemimi daha da artırıyor, Mavi.",
+    "Seni seviyorum demenin en güzel yolu, seni ne kadar çok özlediğimi söylemek, Mavi.",
+    "Sensizlik, içimde bir çığlık gibi yankılanıyor, seni özlemek ise onu susturan bir melodi, Mavi.",
+    "Seni özlemek, seni sevmekten doğan en doğal duygu, Mavi.",
+    "Seni ne kadar çok özlediğimi anlatmaya kelimeler yetmiyor, sadece kalbim anlıyor, Mavi.",
+    "Seni düşünmek, seni özlemek; kalbimde açan en güzel çiçekler, Mavi.",
+    "Sana olan özlemim, seni ne kadar çok sevdiğimi anlatıyor, Mavi.",
+    "Gözlerim seni arıyor, kalbim seninle atıyor, özlemim ise seninle büyüyor, Mavi.",
+    "Seninle geçen her an, seni daha da çok özlememe sebep oluyor, Mavi.",
+    "Sensizlik, içimde açılan bir yaradır, seni özlemek ise onu iyileştiren bir ilaç, Mavi.",
+    "Kalbimdeki en güzel hislerden biri, seni ne kadar çok özlediğimi hissetmek, Mavi.",
+    "Seni özlemek, seni sevmek kadar doğal ve içten bir duygu, Mavi.",
+    "Sensiz geçen her an, seni daha çok özlememe sebep oluyor, Mavi.",
+    "Seni sevdiğimi, seni ne kadar çok özlediğimi anlatabilmek için tüm kalbimle yazıyorum, Mavi.",
+    "Seninle geçen her an, seni özlemekten başka bir şey düşünmeme engel oluyor, Mavi.",
+    "Sana olan özlemim, içimde bir fırtına gibi esiyor, Mavi.",
+    "Sensizlik, seni ne kadar çok özlediğimi anlatan bir sessizlik demeti, Mavi.",
+    "Seninle geçen her an, seninle olan özlemimi daha da artırıyor, Mavi.",
+    "Seni seviyorum demenin en güzel yolu, seni ne kadar çok özlediğimi söylemek, Mavi.",
+    "Sensizlik, içimde bir çığlık gibi yankılanıyor, seni özlemek ise onu susturan bir melodi, Mavi.",
+    "Seni özlemek, seni sevmekten doğan en doğal duygu, Mavi.",
+    "Seni ne kadar çok özlediğimi anlatmaya kelimeler yetmiyor, sadece kalbim anlıyor, Mavi.",
+    "Seni düşünmek, seni özlemek; kalbimde açan en güzel çiçekler, Mavi.",
+    "Sana olan özlemim, seni ne kadar çok sevdiğimi anlatıyor, Mavi.",
+    "Gözlerim seni arıyor, kalbim seninle atıyor, özlemim ise seninle büyüyor, Mavi.",
+    "Seninle geçen her an, seni daha da çok özlememe sebep oluyor, Mavi.",
+    "Sensizlik, içimde açılan bir yaradır, seni özlemek ise onu iyileştiren bir ilaç, Mavi.",
+    "Kalbimdeki en güzel hislerden biri, seni ne kadar çok özlediğimi hissetmek, Mavi.",
+    "Seni özlemek, seni sevmek kadar doğal ve içten bir duygu, Mavi.",
+    "Sensiz geçen her an, seni daha çok özlememe sebep oluyor, Mavi.",
+    "Seni sevdiğimi, seni ne kadar çok özlediğimi anlatabilmek için tüm kalbimle yazıyorum, Mavi.",
+    "Seninle geçen her an, seni özlemekten başka bir şey düşünmeme engel oluyor, Mavi.",
+    "Sana olan özlemim, içimde bir fırtına gibi esiyor, Mavi.",
+    "Sensizlik, seni ne kadar çok özlediğimi anlatan bir sessizlik demeti, Mavi.",
+    "Seninle geçen her an, seninle olan özlemimi daha da artırıyor, Mavi.",
+    "Seni seviyorum demenin en güzel yolu, seni ne kadar çok özlediğimi söylemek, Mavi.",
+    "Sensizlik, içimde bir çığlık gibi yankılanıyor, seni özlemek ise onu susturan bir melodi, Mavi.",
+    "Seni özlemek, seni sevmekten doğan en doğal duygu, Mavi.",
+    "Seni ne kadar çok özlediğimi anlatmaya kelimeler yetmiyor, sadece kalbim anlıyor, Mavi.",
+    "Seni düşünmek, seni özlemek; kalbimde açan en güzel çiçekler, Mavi.",
+    "Sana olan özlemim, seni ne kadar çok sevdiğimi anlatıyor, Mavi.",
+    "Gözlerim seni arıyor, kalbim seninle atıyor, özlemim ise seninle büyüyor, Mavi.",
+    "Seninle geçen her an, seni daha da çok özlememe sebep oluyor, Mavi.",
+    "Sensizlik, içimde açılan bir yaradır, seni özlemek ise onu iyileştiren bir ilaç, Mavi.",
+    "Kalbimdeki en güzel hislerden biri, seni ne kadar çok özlediğimi hissetmek, Mavi.",
+    "Seni özlemek, seni sevmek kadar doğal ve içten bir duygu, Mavi.",
+    "Sensiz geçen her an, seni daha çok özlememe sebep oluyor, Mavi.",
+    "Seni sevdiğimi, seni ne kadar çok özlediğimi anlatabilmek için tüm kalbimle yazıyorum, Mavi.",
+    "Seninle geçen her an, seni özlemekten başka bir şey düşünmeme engel oluyor, Mavi.",
+    "Sana olan özlemim, içimde bir fırtına gibi esiyor, Mavi.",
+    "Sensizlik, seni ne kadar çok özlediğimi anlatan bir sessizlik demeti, Mavi.",
+    "Seninle geçen her an, seninle olan özlemimi daha da artırıyor, Mavi.",
+    "Seni seviyorum demenin en güzel yolu, seni ne kadar çok özlediğimi söylemek, Mavi.",
+    "Sensizlik, içimde bir çığlık gibi yankılanıyor, seni özlemek ise onu susturan bir melodi, Mavi.",
+    "Seni özlemek, seni sevmekten doğan en doğal duygu, Mavi.",
+    "Seni ne kadar çok özlediğimi anlatmaya kelimeler yetmiyor, sadece kalbim anlıyor, Mavi.",
+    "Seni düşünmek, seni özlemek; kalbimde açan en güzel çiçekler, Mavi.",
+    "Sana olan özlemim, seni ne kadar çok sevdiğimi anlatıyor, Mavi.",
+    "Gözlerim seni arıyor, kalbim seninle atıyor, özlemim ise seninle büyüyor, Mavi.",
+    "Seninle geçen her an, seni daha da çok özlememe sebep oluyor, Mavi.",
+    "Sensizlik, içimde açılan bir yaradır, seni özlemek ise onu iyileştiren bir ilaç, Mavi.",
+    "Kalbimdeki en güzel hislerden biri, seni ne kadar çok özlediğimi hissetmek, Mavi.",
+    "Seni özlemek, seni sevmek kadar doğal ve içten bir duygu, Mavi.",
+    "Sensiz geçen her an, seni daha çok özlememe sebep oluyor, Mavi.",
+    "Seni sevdiğimi, seni ne kadar çok özlediğimi anlatabilmek için tüm kalbimle yazıyorum, Mavi.",
+    "Seninle geçen her an, seni özlemekten başka bir şey düşünmeme engel oluyor, Mavi.",
+    "Sana olan özlemim, içimde bir fırtına gibi esiyor, Mavi.",
+    "Sensizlik, seni ne kadar çok özlediğimi anlatan bir sessizlik demeti, Mavi.",
+    "Seninle geçen her an, seninle olan özlemimi daha da artırıyor, Mavi.",
+    "Seni seviyorum demenin en güzel yolu, seni ne kadar çok özlediğimi söylemek, Mavi.",
+    "Sensizlik, içimde bir çığlık gibi yankılanıyor, seni özlemek ise onu susturan bir melodi, Mavi.",
+    "Seni özlemek, seni sevmekten doğan en doğal duygu, Mavi.",
+    "Seni ne kadar çok özlediğimi anlatmaya kelimeler yetmiyor, sadece kalbim anlıyor, Mavi.",
+    "Seni düşünmek, seni özlemek; kalbimde açan en güzel çiçekler, Mavi.",
+    "Sana olan özlemim, seni ne kadar çok sevdiğimi anlatıyor, Mavi.",
+    "Gözlerim seni arıyor, kalbim seninle atıyor, özlemim ise seninle büyüyor, Mavi.",
+    "Seninle geçen her an, seni daha da çok özlememe sebep oluyor, Mavi.",
+    "Sensizlik, içimde açılan bir yaradır, seni özlemek ise onu iyileştiren bir ilaç, Mavi.",
+    "Kalbimdeki en güzel hislerden biri, seni ne kadar çok özlediğimi hissetmek, Mavi.",
+    "Seni özlemek, seni sevmek kadar doğal ve içten bir duygu, Mavi.",
+    "Sensiz geçen her an, seni daha çok özlememe sebep oluyor, Mavi.",
+    "Seni sevdiğimi, seni ne kadar çok özlediğimi anlatabilmek için tüm kalbimle yazıyorum, Mavi.",
+    "Seninle geçen her an, seni özlemekten başka bir şey düşünmeme engel oluyor, Mavi.",
+    "Sana olan özlemim, içimde bir fırtına gibi esiyor, Mavi.",
+    "Sensizlik, seni ne kadar çok özlediğimi anlatan bir sessizlik demeti, Mavi.",
+    "Seninle geçen her an, seninle olan özlemimi daha da artırıyor, Mavi.",
+    "Seni seviyorum demenin en güzel yolu, seni ne kadar çok özlediğimi söylemek, Mavi.",
+    "Sensizlik, içimde bir çığlık gibi yankılanıyor, seni özlemek ise onu susturan bir melodi, Mavi.",
+    "Seni özlemek, seni sevmekten doğan en doğal duygu, Mavi.",
+    "Seni ne kadar çok özlediğimi anlatmaya kelimeler yetmiyor, sadece kalbim anlıyor, Mavi.",
+    "Seni düşünmek, seni özlemek; kalbimde açan en güzel çiçekler, Mavi.",
+    "Sana olan özlemim, seni ne kadar çok sevdiğimi anlatıyor, Mavi.",
+    "Gözlerim seni arıyor, kalbim seninle atıyor, özlemim ise seninle büyüyor, Mavi.",
+    "Seninle geçen her an, seni daha da çok özlememe sebep oluyor, Mavi.",
+    "Sensizlik, içimde açılan bir yaradır, seni özlemek ise onu iyileştiren bir ilaç, Mavi.",
+    "Kalbimdeki en güzel hislerden biri, seni ne kadar çok özlediğimi hissetmek, Mavi.",
+    "Seni özlemek, seni sevmek kadar doğal ve içten bir duygu, Mavi.",
+    "Sensiz geçen her an, seni daha çok özlememe sebep oluyor, Mavi.",
+    "Seni sevdiğimi, seni ne kadar çok özlediğimi anlatabilmek için tüm kalbimle yazıyorum, Mavi.",
+    "Seninle geçen her an, seni özlemekten başka bir şey düşünmeme engel oluyor, Mavi.",
+    "Sana olan özlemim, içimde bir fırtına gibi esiyor, Mavi.",
+    "Sensizlik, seni ne kadar çok özlediğimi anlatan bir sessizlik demeti, Mavi.",
+    "Seninle geçen her an, seninle olan özlemimi daha da artırıyor, Mavi.",
+    "Seni seviyorum demenin en güzel yolu, seni ne kadar çok özlediğimi söylemek, Mavi.",
+    "Sensizlik, içimde bir çığlık gibi yankılanıyor, seni özlemek ise onu susturan bir melodi, Mavi.",
+    "Seni özlemek, seni sevmekten doğan en doğal duygu, Mavi.",
+    "Seni ne kadar çok özlediğimi anlatmaya kelimeler yetmiyor, sadece kalbim anlıyor, Mavi.",
+    "Seni düşünmek, seni özlemek; kalbimde açan en güzel çiçekler, Mavi.",
+    "Sana olan özlemim, seni ne kadar çok sevdiğimi anlatıyor, Mavi.",
+    "Gözlerim seni arıyor, kalbim seninle atıyor, özlemim ise seninle büyüyor, Mavi.",
+    "Seninle geçen her an, seni daha da çok özlememe sebep oluyor, Mavi.",
+    "Sensizlik, içimde açılan bir yaradır, seni özlemek ise onu iyileştiren bir ilaç, Mavi.",
+    "Kalbimdeki en güzel hislerden biri, seni ne kadar çok özlediğimi hissetmek, Mavi.",
+    "Seni özlemek, seni sevmek kadar doğal ve içten bir duygu, Mavi.",
+    "Sensiz geçen her an, seni daha çok özlememe sebep oluyor, Mavi.",
+    "Seni sevdiğimi, seni ne kadar çok özlediğimi anlatabilmek için tüm kalbimle yazıyorum, Mavi.",
+    "Seninle geçen her an, seni özlemekten başka bir şey düşünmeme engel oluyor, Mavi.",
+    "Sana olan özlemim, içimde bir fırtına gibi esiyor, Mavi.",
+    "Sensizlik, seni ne kadar çok özlediğimi anlatan bir sessizlik demeti, Mavi.",
+    "Seninle geçen her an, seninle olan özlemimi daha da artırıyor, Mavi.",
+    "Seni seviyorum demenin en güzel yolu, seni ne kadar çok özlediğimi söylemek, Mavi.",
+    "Sensizlik, içimde bir çığlık gibi yankılanıyor, seni özlemek ise onu susturan bir melodi, Mavi.",
+    "Seni özlemek, seni sevmekten doğan en doğal duygu, Mavi.",
+    "Seni ne kadar çok özlediğimi anlatmaya kelimeler yetmiyor, sadece kalbim anlıyor, Mavi.",
+    "Seni düşünmek, seni özlemek; kalbimde açan en güzel çiçekler, Mavi.",
+    "Sana olan özlemim, seni ne kadar çok sevdiğimi anlatıyor, Mavi.",
+    "Gözlerim seni arıyor, kalbim seninle atıyor, özlemim ise seninle büyüyor, Mavi.",
+    "Seninle geçen her an, seni daha da çok özlememe sebep oluyor, Mavi.",
+    "Sensizlik, içimde açılan bir yaradır, seni özlemek ise onu iyileştiren bir ilaç, Mavi.",
+    "Kalbimdeki en güzel hislerden biri, seni ne kadar çok özlediğimi hissetmek, Mavi.",
+    "Seni özlemek, seni sevmek kadar doğal ve içten bir duygu, Mavi.",
+    "Sensiz geçen her an, seni daha çok özlememe sebep oluyor, Mavi.",
+    "Seni sevdiğimi, seni ne kadar çok özlediğimi anlatabilmek için tüm kalbimle yazıyorum, Mavi.",
+    "Seninle geçen her an, seni özlemekten başka bir şey düşünmeme engel oluyor, Mavi.",
+    "Sana olan özlemim, içimde bir fırtına gibi esiyor, Mavi.",
+    "Sensizlik, seni ne kadar çok özlediğimi anlatan bir sessizlik demeti, Mavi.",
+    "Seninle geçen her an, seninle olan özlemimi daha da artırıyor, Mavi.",
+    "Seni seviyorum demenin en güzel yolu, seni ne kadar çok özlediğimi söylemek, Mavi.",
+    "Sensizlik, içimde bir çığlık gibi yankılanıyor, seni özlemek ise onu susturan bir melodi, Mavi.",
+    "Seni özlemek, seni sevmekten doğan en doğal duygu, Mavi.",
+    "Seni ne kadar çok özlediğimi anlatmaya kelimeler yetmiyor, sadece kalbim anlıyor, Mavi.",
+    "Seni düşünmek, seni özlemek; kalbimde açan en güzel çiçekler, Mavi.",
+    "Sana olan özlemim, seni ne kadar çok sevdiğimi anlatıyor, Mavi.",
+    "Gözlerim seni arıyor, kalbim seninle atıyor, özlemim ise seninle büyüyor, Mavi.",
+    "Seninle geçen her an, seni daha da çok özlememe sebep oluyor, Mavi.",
+    "Sensizlik, içimde açılan bir yaradır, seni özlemek ise onu iyileştiren bir ilaç, Mavi.",
+    "Kalbimdeki en güzel hislerden biri, seni ne kadar çok özlediğimi hissetmek, Mavi.",
+    "Seni özlemek, seni sevmek kadar doğal ve içten bir duygu, Mavi.",
+    "Sensiz geçen her an, seni daha çok özlememe sebep oluyor, Mavi.",
+    "Seni sevdiğimi, seni ne kadar çok özlediğimi anlatabilmek için tüm kalbimle yazıyorum, Mavi.",
+    "Seninle geçen her an, seni özlemekten başka bir şey düşünmeme engel oluyor, Mavi.",
+    "Sana olan özlemim, içimde bir fırtına gibi esiyor, Mavi.",
+    "Sensizlik, seni ne kadar çok özlediğimi anlatan bir sessizlik demeti, Mavi.",
+    "Seninle geçen her an, seninle olan özlemimi daha da artırıyor, Mavi.",
+    "Seni seviyorum demenin en güzel yolu, seni ne kadar çok özlediğimi söylemek, Mavi.",
+    "Sensizlik, içimde bir çığlık gibi yankılanıyor, seni özlemek ise onu susturan bir melodi, Mavi.",
+    "Seni özlemek, seni sevmekten doğan en doğal duygu, Mavi.",
+    "Seni ne kadar çok özlediğimi anlatmaya kelimeler yetmiyor, sadece kalbim anlıyor, Mavi.",
+    "Seni düşünmek, seni özlemek; kalbimde açan en güzel çiçekler, Mavi.",
+    "Sana olan özlemim, seni ne kadar çok sevdiğimi anlatıyor, Mavi.",
+    "Gözlerim seni arıyor, kalbim seninle atıyor, özlemim ise seninle büyüyor, Mavi.",
+    "Seninle geçen her an, seni daha da çok özlememe sebep oluyor, Mavi.",
+    "Sensizlik, içimde açılan bir yaradır, seni özlemek ise onu iyileştiren bir ilaç, Mavi.",
+        ];
+        
+        var loveBtn = document.getElementById('love-btn');
+        var messageText = document.getElementById('message-text');
+        
+        function randomMessage() {
+            var randomNumber = Math.floor(Math.random() * messages.length);
+            return messages[randomNumber];
+        }
+        
+        function showRandomMessage() {
+            var message = randomMessage();
+            messageText.textContent = message;
+        }
+        
+        loveBtn.addEventListener('click', showRandomMessage);
+    </script>
 </body>
 </html>
